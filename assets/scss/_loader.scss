@@ -1,0 +1,76 @@
+/* ==========================================================================
+   Loader
+   ========================================================================== */
+ .loader {
+	@include transition(all,1000ms); 
+
+	background: linear-gradient(128deg, #fd5a6f, #f34057, #d02036) !important;
+	background-size: 600% 600% !important;
+
+	-webkit-animation: AnimationName 8s ease infinite;
+	-moz-animation: AnimationName 8s ease infinite;
+	-o-animation: AnimationName 8s ease infinite;
+	animation: AnimationName 8s ease infinite;
+} 
+
+ .loader.hide {
+	top: -100%;
+	opacity: 0;
+ }
+
+  .loader polyline {
+  	@include animation(#{loader-anim 5s ease-in-out infinite });
+
+  	stroke-dasharray: 800;
+    stroke-dashoffset: 0;
+
+  }
+
+   .loader polyline.shadow {
+  	@include animation(#{loader-anim 5s ease-in-out infinite 2.5s });
+
+  	stroke-dasharray: 800;
+    stroke-dashoffset: 0;  
+
+  }
+
+@include keyframes(loader-anim) { 
+
+	0% {
+		stroke-dashoffset: 0;
+	}
+ 
+	50% {
+		stroke-dashoffset: 800;
+	} 
+	50.001% {
+		stroke-dashoffset: -800;
+	} 
+
+	100% {
+		stroke-dashoffset: 0;
+	}
+
+}
+
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:83% 0%}
+    50%{background-position:18% 100%}
+    100%{background-position:83% 0%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:83% 0%}
+    50%{background-position:18% 100%}
+    100%{background-position:83% 0%}
+}
+@-o-keyframes AnimationName {
+    0%{background-position:83% 0%}
+    50%{background-position:18% 100%}
+    100%{background-position:83% 0%}
+}
+@keyframes AnimationName { 
+    0%{background-position:83% 0%}
+    50%{background-position:18% 100%}
+    100%{background-position:83% 0%}
+}

@@ -1,0 +1,422 @@
+/* ==========================================================================
+   Contact
+   ========================================================================== */
+
+/* Contact buttons
+   ========================================================================== */   
+
+.buttons-row.container {
+	margin:30px 0px;  
+	width: 80%;
+}
+
+.buttons-row .a-contact {
+	margin-top: 15px; 
+	text-align: left;
+}
+
+.contact-icon {
+	@include size(45px, 45px);
+	
+	position: relative;
+	display: inline-block;
+	margin-right: 10px; 
+	border:2px solid $c-secondary;
+	border-radius: 50%;
+
+	.icon-wrapper {
+		@include posAbsFull();  
+
+		overflow: hidden;		
+		border-radius: 50%;
+	}
+
+	svg {
+		@include absolute(top 20%  left 20%); 
+		@include size(60%,60%);
+		@include transition();
+
+		path, polyline, line, rect, polygon {
+			@include transition();
+
+			fill:none;
+			stroke:$c-secondary;
+			stroke-width:16; 
+
+			&.fillwhite{
+				fill:#fff;
+			}  
+
+		}
+
+
+	}
+
+}
+
+.contact-icon::after {
+	@include absolute(top -2px left -2px);
+	@include size(#{calc(100% + 4px)},#{calc(100% + 4px)});
+	
+	content:'';
+	border-color:$c-color;
+	border-style: solid;
+	border-width: 0px;
+	border-radius: 50%;
+	transition: 
+		border-left-width 75ms linear,
+		border-top-width 75ms linear 50ms,
+		border-right-width 75ms linear 125ms,
+		border-bottom-width 75ms linear 200ms;
+}
+
+.contact-text {
+	@include relative(top -18.5px); 
+	@include transition();
+
+	display: inline-block;
+	font-size: 0.8rem;
+	font-weight: 600;
+	font-family: $fontfamily-secondary; 
+	letter-spacing: 0.05rem;
+	color:$c-primary;
+}
+
+.a-contact:hover {
+
+	.contact-text {
+		color:$c-color;  
+	}
+
+	.contact-icon::after{
+		border-left-width:2px;
+		border-top-width:2px;
+		border-right-width:2px;
+		border-bottom-width:2px;
+	}
+
+}
+
+//Icons
+
+//e-mail
+
+.contact-icon.email {
+
+	svg {
+		top: 10%;   
+	}
+
+	#text {
+
+		line, polyline {
+			stroke-dasharray: 110px;
+			stroke-dashoffset: 110px;
+
+			&.textline-1 { 	
+				stroke-dashoffset: 20px;	
+				@include prefix(transition-delay, 100ms); 		
+			}
+
+			&.textline-2 {
+				
+			}
+
+			&.textline-3 {
+				stroke-dashoffset: 70px;
+				@include prefix(transition-delay, 200ms); 
+			}
+
+		}
+		
+	}
+
+	#paper rect{
+		y:30;
+	}
+
+}
+
+.a-contact:hover .contact-icon.email {
+	
+	svg {
+		top: 18%;   
+	}
+
+	#text {
+
+		line, polyline {
+			stroke-dasharray: 110px;
+			stroke-dashoffset: 0px;
+		}
+		
+	}
+
+	#paper rect{
+		y:4;
+	}
+
+}
+
+
+//phone
+
+.contact-icon.phone {
+
+	#shortsignal, #longsignal { 
+
+		path{ stroke-width:0px; }
+
+	}
+
+}
+.a-contact:hover .contact-icon.phone {
+
+	#shortsignal, #longsignal { 
+
+		path {
+			@include animation(#{signal-blinking 600ms linear infinite});
+		}
+		
+	}
+
+	#longsignal path{  
+		@include prefix(animation-delay,150ms);
+	}
+
+} 
+
+@include keyframes(signal-blinking){
+	0%{
+		stroke-width:0;
+	}
+	40%{
+		stroke-width:16;
+	}
+	60%{
+		stroke-width:16;
+	}
+	80%{
+		stroke-width:0;
+	}
+	100%{
+		stroke-width:0;
+	}
+}
+
+//social media
+
+.contact-icon.socialmedia {
+
+	#social-media-message circle {
+		fill:none;
+	}
+
+	#social-media-hover {
+		@include prefix(animation-delay,250ms);  
+
+		stroke-dasharray: 360;
+		stroke-dashoffset: 360;
+		fill:transparent;
+	}
+
+}
+
+.a-contact:hover .contact-icon.socialmedia {
+
+	#social-media-message circle {
+		fill:$c-secondary;
+	}
+
+	#social-media-hover {
+		@include prefix(animation-delay,250ms);  
+
+		stroke-dasharray: 360;
+		stroke-dashoffset: 0;
+		fill:#fff;
+	}
+
+}
+
+
+//contact form
+
+.contact-icon.contactform {
+
+	 svg { 
+		left:15%;
+	  }
+
+}
+
+.a-contact:hover .contact-icon.contactform {
+
+	 svg{
+	 	@include animation(#{contactform-anim 1200ms ease-in-out});
+	 }
+
+}
+
+@include keyframes(contactform-anim){
+	0%{
+		top:20%;
+		left:15%;
+	}
+	50%{
+		top:-80%;
+		left:115%;
+	}
+	55%{
+		top:-80%;
+		left:115%;
+	}
+	55.1%{
+		top:120%;
+		left:-85%;
+	}	 
+	100%{
+		top:20%;
+		left:15%;
+	}
+}
+
+/* Slider Partners
+   ========================================================================== */
+ 
+ .owl-carousel.vertical-carousel {
+	@include absolute( top 5vh right 0);
+	@include transform(#{rotate(90deg)});   
+	@include size(90vh,90vh);    
+    
+    .owl-stage-outer {
+    	top: 16.666vw;
+    	margin-top: -5vh;    	
+    }
+
+    .owl-item {
+    	text-align: center;
+    }
+
+	.item {
+		@include transform(#{rotate(-90deg)});
+		@include size(30vh,30vh);
+		
+		display:inline-block;
+		text-align:center;
+
+		img {
+			@include size(auto,80%); 
+			@include relative(left 10%);   
+
+		}
+
+	}
+
+ }   
+
+/* Social media 
+   ========================================================================== */
+
+ .social-media-box {
+ 	@include absolute(bottom 50px left 8.333vw);
+ 	@include size(70%);  
+ }
+
+ .socialmedia-link {
+ 	@include size(30px, 30px);
+ 	@include transition();
+	
+	position: relative;
+ 	display: inline-block;
+ 	margin-right: 10px;
+ 	background:$c-bg-medium; 
+ 	border-radius: 50%;
+
+ 	svg {
+ 		@include size(50%, 50%);
+ 		@include absolute(bottom 25% left 25%);
+
+ 		path {
+ 			fill:#fff;
+ 			stroke-width:0; 
+ 		}
+
+ 	}
+
+ 	&:hover {
+ 		background:$c-secondary; 
+ 	}
+
+ }
+
+ .social-media-box::after {
+  	@include absolute(bottom 20px left 135px);
+  	@include size(100%, 2px);
+	
+	content: ''; 
+  	background:$c-bg-normal; 
+  }
+
+/* RWD
+   ========================================================================== */
+
+@include media-breakpoint-down(lg) {
+
+   .buttons-row.container {
+   		width: 100%;
+   		padding: 0;
+   }
+
+   .buttons-row .a-contact {
+   	 padding-right: 5px;
+   	 white-space: nowrap;
+   }
+
+   .sidemenu-container.contact-form .sidemenu-button-box button {
+   		display: none;
+   } 
+   
+}
+
+@include media-breakpoint-down(md) {
+
+	.contact-icon {
+	    width: 35px;
+	    height: 35px; 
+	    top:-5px; 
+	    margin-right: 5px; 
+	}
+
+}
+
+@include media-breakpoint-down(sm) {
+
+	.buttons-row.container {
+	    margin: 10px 0px;
+	    width: 100%;
+	 } 
+
+	.text-group .buttons-row .a-contact {
+	    margin: 3px !important;
+	    padding-left:0;
+	    left: 10px;
+   		top: 10px; 
+	}
+
+}
+
+
+@media (max-width: 767px) and (orientation: landscape) { 
+
+	.text-group .buttons-row .a-contact {
+		display: inline-block;
+		width: 49%;
+	    margin: 3px 0px; 
+	}
+
+	.social-media-box {
+	    bottom: 15px;
+	    left: 30px;
+	}
+
+}

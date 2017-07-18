@@ -1,0 +1,75 @@
+/* ==========================================================================
+   Project
+   ========================================================================== */
+
+.project-page {
+
+	.video-bg {
+		top: -10vh;
+    	right: -10vw;  
+	    height: 120vh;
+	    width: 120vw;	    
+	}
+
+}
+
+.project-page.fp-viewing-start {
+
+	header .logo-header svg path, header .logo-header svg polygon { 
+    	fill: #fff;  
+	}
+}
+
+#start-section .project-firsthgroup {
+
+	h1 {
+		margin-bottom: 50px;
+		font-size:1.5rem;
+		color:$c-bg-light;
+		font-family: $fontfamily-secondary;
+		letter-spacing:0.25rem;
+	}
+
+	h2 {
+		margin-bottom: 10vh;
+		font-size:5rem;
+		letter-spacing:0.25rem;
+		font-weight: 800;
+		font-family: $fontfamily-primary;
+		color:#fff;
+
+		small {
+			font-size:3rem;
+			line-height: 3rem;
+			white-space: nowrap;
+		}
+	}
+
+}
+
+
+
+
+.horizontal-skew {
+	@include absolute(bottom -12vh  left 0);
+	@include size(100vw, 20vh); 
+	@include transform(#{skewY(-4deg)});
+	z-index: 2;
+	background: $c-bg-light;
+}
+
+ 
+
+//Domtechik-blue
+
+.domtechnik-blue {
+
+	 .loader {
+	 	background:#33a0f5 !important; 
+	 }
+
+		.video-bg-box::after {
+			background:#33a0f5; 
+		}
+
+}

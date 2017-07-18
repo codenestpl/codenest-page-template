@@ -1,0 +1,56 @@
+/* ==========================================================================
+   SCSS Settings
+   ========================================================================== */
+
+/* Colors
+   ========================================================================== */
+$c-grey-light:#f6f6f6;
+$c-grey-medium:#565656;
+$c-grey-dark:#272727; 
+$c-color:#f34057;
+
+$c-primary:$c-grey-dark;
+$c-secondary:$c-grey-medium; 
+
+$c-bg-light:rgb(254,254,254);
+$c-bg-normal:#efefef;   
+$c-bg-medium:rgb(200,200,200); 
+$c-bg-dark:rgb(190,190,190);         
+
+/* Texts
+   ========================================================================== */
+
+//Font family
+
+$fontfamily-primary: #{Source Sans Pro', sans-serif'};
+$fontfamily-secondary: #{'Open Sans', sans-serif};
+
+//Sizes
+
+$text-size-l:75px;
+$text-size-m:24px;
+$text-size-n:18px;
+$text-size-s:16px;
+$text-size-xs:14px;
+$text-size-xxs:12px;
+
+//Line-heights
+
+$text-lineheight-l:70px;
+$text-lineheight-m:24px;
+$text-lineheight-n:18px;
+$text-lineheight-s:16px;
+$text-lineheight-xs:14px;
+$text-lineheight-xxs:12px;
+
+//Weights
+
+$text-weight-b:400;
+$text-weight-sb:600;
+$text-weight-r:700;
+
+//Letter-spacings
+
+$text-letterspacing-full:80;
+$text-letterspacing-half:40; 
+ 

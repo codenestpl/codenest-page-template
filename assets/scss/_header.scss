@@ -1,0 +1,210 @@
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+/* Static
+   ========================================================================== */
+
+header {
+	@include transition(); 
+	@include prefix(translation-delay,900ms);	 
+}
+
+.logo-header { 
+	
+	svg { 
+		@include transition();
+		@include prefix(translation-delay,900ms);	 
+
+		height: auto;  
+		min-width: 160px;
+		margin:20px -10px;
+
+		path, polygon {			 
+			@include transition();
+			@include prefix(translation-delay,900ms);	 
+
+			fill:$c-primary;
+		}
+
+	 }
+}
+
+#header-contact-info {
+	@include posAbs();
+	z-index:2;
+	text-align:right; 
+
+	width: 100%;
+	
+	.row {
+		justify-content: flex-end;
+	} 
+
+} 
+
+.menu-header {
+	@include transition();   
+	position: relative;
+
+	ul {
+		list-style: none;
+		padding-left: 0;
+		text-align: right;		
+	}
+
+	li{
+		display: inline-block;
+		margin:33px 1px; 
+
+		&:last-of-type {
+			margin-right:0; 
+		}
+	}
+
+}
+
+.menu-header a{
+	@include transition(); 
+
+	position: relative;
+	display: block;
+	padding: 5px 15px;	
+	border:2px solid transparent; 
+	font-size: 0.9rem; 
+	font-family: $fontfamily-primary;
+	font-weight: 600;
+	color:$c-bg-light;
+	text-transform: uppercase;
+
+	span {
+		@include transition(200ms,all,ease-in-out 50ms); 
+
+		position: relative;
+		display: block;		
+		z-index: 1;
+	}
+
+	&:after,&:before {
+		content: '';
+		z-index: 0; 
+		background: #fff; 
+	}
+
+	&:after {
+		@include absolute(top 50% left 0); 
+		@include size(0,3px); 
+		@include transition(100ms,all,ease-in-out );
+
+		
+	}
+
+	&:before {
+		@include absolute(top 50% left 0); 
+		@include size(100%,0); 
+		@include transition(200ms,all,ease-in-out 150ms); 
+
+		border-radius: 2px;
+	}
+
+	&.contact-menu-el {
+		border:2px solid #fff; 
+		margin-right: 10px;
+	}
+
+}
+
+.menu-header li:hover {
+	a {
+		color:$c-color;
+		border:2px solid #fff; 
+	}
+
+	a:after { 
+		@include absolute(top 50% left 0); 
+		@include size(100%,3px); 		  
+	}
+
+	a:before { 
+		@include absolute(top 0 left 0);
+		@include size(100%,100%);  	
+	}
+}
+
+/* Header situations
+   ========================================================================== */
+
+.fp-viewing-start header {
+	 .logo-header svg {
+	 	width: 80%;  
+
+	 	path {
+			fill:$c-primary;
+	 	}
+
+	 }
+}
+
+body:not(.fp-viewing-start) header {
+
+	.logo-header svg {
+		width: 90%;
+	}
+
+	 .logo-header svg path{
+	 	fill:transparent;
+	 }
+
+}
+
+.fp-viewing-start .menu-header{
+	top: 0;
+	opacity: 1;
+}
+
+body:not(.fp-viewing-start)  .menu-header{
+	top: -100px;
+	opacity: 0;
+}
+
+
+/* RWD
+   ========================================================================== */
+
+@include media-breakpoint-down(md) { 
+
+	.menu-header {
+		display: none;
+	}
+	
+	.logo-header svg {
+		width: 100%;
+	}
+
+} 
+
+@include media-breakpoint-down(sm) {
+
+	header.container-fluid {
+		padding: 10px 30px 0;
+	}
+		
+	header .logo-header svg {
+		max-width: 140px;
+		margin:10px 0px;
+	}  
+
+	body:not(.fp-viewing-start) header .logo-header  { 
+		display: none; 
+	}	
+		 
+
+	.fp-viewing-start header .logo-header svg {
+
+		path, polygon {
+			fill:#fff; 
+		}
+
+	}
+
+}

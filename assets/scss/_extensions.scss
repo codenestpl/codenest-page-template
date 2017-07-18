@@ -1,0 +1,44 @@
+/* ==========================================================================
+   SCSS Extensions
+   ========================================================================== */
+
+/* Text styles
+   ========================================================================== */
+
+.heading-primary {
+	margin:10px 0px; 
+	font-family:$fontfamily-primary;
+	font-size:3rem; 
+	line-height:3rem;
+	color:$c-primary;
+	font-weight:800;  
+	text-transform: uppercase;
+	letter-spacing: 0.02rem;
+	line-height: 3.4rem;
+	} 
+
+.heading-secondary {
+	margin:20px 0 30px ;
+	font-family:$fontfamily-primary;
+	font-size:1.5rem; 
+	line-height:$text-lineheight-m;
+	color:$c-primary;  
+	font-weight:600;
+	letter-spacing: 0.05rem;
+	}
+
+.heading-other {
+	margin:5px 0;
+	font-family:$fontfamily-secondary;
+	font-size:0.9rem; 
+	line-height:$text-lineheight-m;
+	color:$c-grey-medium;
+	font-weight:$text-weight-r;
+	letter-spacing:0.2rem;  
+	text-transform: uppercase;
+	}
+
+.text-p {
+	width: 70%;  
+	margin:20px 0;	
+	}

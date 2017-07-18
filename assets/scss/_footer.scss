@@ -1,0 +1,63 @@
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+section:last-of-type {
+
+	.fp-tableCell {
+		@include relative( top 0px); 
+		@include transition();
+	}
+
+}
+
+ footer {
+	@include size(100%, 100px); 
+	
+	position: fixed;
+	top: calc(100vh - 100px);
+	z-index:0;
+	background: $c-color;
+
+	a {
+		@include absolute( top 50% right 8.333%);
+		
+		margin-top: -8px;
+		font-size: 0.8rem;
+		font-weight: 600;
+		letter-spacing: 0.1rem;
+		color: #fff;
+		text-transform: uppercase;
+	}
+ 	
+ }
+
+ section.active-footer {
+
+	.fp-tableCell {
+		@include relative( top -100px);
+	}
+
+}
+
+.logo-footer {		 
+		@include centered(200px);  
+		
+		position: absolute; 
+		top: 50%;
+		height: 70px; 
+		margin-top: -35px;
+
+		svg{
+			position: relative;
+			left:50px;
+			height: 100%;
+			width: auto;
+
+			polygon {
+				fill: #fff;
+			}
+		}
+}
+
+ 

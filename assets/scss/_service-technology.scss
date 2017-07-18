@@ -1,0 +1,456 @@
+/* ==========================================================================
+  	Service & Technology Grid
+   ========================================================================== */
+
+
+
+/* Genral animations styles
+   ========================================================================== */
+
+.animation-screen {
+	@include posAbsFull();
+
+	overflow: hidden;
+
+	.animation-screen-layer{
+		@include posAbsFull();
+
+		svg{
+			float: right;
+			height: 100%;
+			width: 90%;
+		}
+
+		path, line, circle, polygon, polyline {   
+			fill:none;
+			stroke:#fff;
+			stroke-width: 2;
+			stroke-linecap: round;
+		}
+
+	}
+
+}
+
+.service-animation-screen, .technology-animation-screen {
+
+	opacity: 0;
+	z-index: 1;
+
+	&.active {
+		opacity: 1;
+		z-index: 1;
+	}
+
+}
+
+.gradient-animation-screen {
+	z-index: 2; 
+
+	.gradient {
+		@include posAbsFull();
+
+		opacity: 0; 
+	}  
+
+	.green-to-blue {
+		background: linear-gradient(45deg, #62ce32, #1b38be);
+		background-size: 400% 400%;   
+	}
+
+
+	.blue-to-green {
+		background: linear-gradient(45deg, #62ce32, #1b38be);
+		background-size: 400% 400%;   
+	}
+
+}
+
+.green-to-blue.active { 
+		@include animation(#{1000ms green-to-blue-anim ease-in-out forwards}); 
+	}
+
+.blue-to-green.active { 
+	@include animation(#{1000ms blue-to-green-anim ease-in-out forwards});  
+}
+ 
+
+   @include keyframes(green-to-blue-anim){
+		 0%{
+		 	background-position:0% 100%; 
+		 	opacity: 0;}
+		 25%{
+		 	background-position:0% 100%; 
+		 	opacity: 1;}
+    	75%{
+    		background-position:100% 0%;
+    		opacity: 1;}
+    	100%{
+    		background-position:100% 0%;
+    		opacity: 0;}
+   }
+
+
+
+   @include keyframes(blue-to-green-anim){
+		 0%{
+		 	background-position:100% 0%; 
+		 	opacity: 0;}
+		 25%{
+		 	background-position:100% 0%; 
+		 	opacity: 1;}
+    	75%{
+    		background-position:0% 100%;
+    		opacity: 1;}
+    	100%{
+    		background-position:0% 100%;   
+    		opacity: 0;}
+   }
+
+ .buttons-row {
+	width: 70%;
+ 	margin-top: 40px;
+ 	text-align: right;
+ 	a {
+
+ 	}
+ }
+
+
+#technology-link { 
+	width: 210px;
+	margin-right: 20px;
+ }
+#service-link {}
+
+/* Carousels 
+   ========================================================================== */
+
+.tech-serv-carousel {
+
+	.item {
+		padding-right: 40px; 
+	}
+
+}
+
+.tech-serv-icon {
+	@include size(30%);
+	
+	position: relative;
+	margin-bottom: 30px; 
+
+	&::after, &::before {
+		@include absolute (top 50% left 100%); 
+		@include size(#{calc(222% - 20px)}, 2px); 
+		@include transition();
+		
+		margin-left:20px; 
+		content:'';
+		display:block;
+		background-color:$c-bg-medium;
+	} 
+
+	&::before {
+		left:initial;
+		right: -222%; 
+		width: 0;
+		background-color:$c-color;
+		z-index:1;   
+	}
+
+	svg {
+		width: 100%;
+		height: 100%;
+	}
+
+	path, line, polyline, polygon, circle, rect {
+		@include transition();
+
+		fill: none;
+		stroke:$c-secondary;
+		stroke-width:4;
+		stroke-linecap: round;
+
+		&.fill{
+			fill: $c-secondary;
+			stroke-width:0;
+		} 
+
+		&.toDraw:not(.draw) {
+			stroke:$c-bg-dark; 
+		}
+
+		&.toDraw.draw {
+			stroke:$c-secondary; 
+			stroke-dasharray: 300;
+			stroke-dashoffset:300; 
+		}
+
+	} 
+
+} 
+
+.tech-serv-text {
+
+	h4{
+		@extend .heading-other;
+
+		color:$c-primary;
+	}
+
+	p {
+		font-size:0.9rem;
+		line-height:1.5rem; 
+		text-align: justify;
+	}
+
+}
+
+.tech-serv-carousel .item:hover {
+
+	.tech-serv-icon{
+
+		&::before {
+			width:calc(222% - 20px);
+			@include prefix(transition-delay, 250ms);
+		}
+
+	}
+
+}
+
+.tech-serv-carousel .item:hover .tech-serv-icon {			
+
+	path, line, polyline, polygon, circle, rect {
+
+		&.toDraw.draw {
+			stroke:$c-secondary;
+			stroke-dashoffset:0;
+		}
+
+	}
+
+}
+
+.tech-serv-carousel .owl-nav {
+	bottom:-120px;
+	right:0px;
+	
+}
+
+.tech-serv-carousel.owl-theme .owl-nav [class*="owl-"] svg path.arrowsvg-slider {
+    fill:$c-secondary;
+	}
+
+.tech-serv-carousel .owl-prev::after{ 
+	background-color:$c-bg-medium;
+	}   
+
+
+/* Nav slides
+   ========================================================================== */
+
+#uslugi-slide, #technologie-slide {
+	overflow: hidden;
+}   
+
+.fp-viewing-oferta-1, .fp-viewing-oferta-2 {
+	#fp-nav {
+		 left: -50px;
+   		 opacity: 0;
+	}
+
+	header {
+    	top: -100px;
+   		 opacity: 0;  
+	}
+}
+
+.slide-nav.prev-slide {
+	left:0px;
+}
+
+.next-icon {
+	@include size(50px, 40px);
+	@include absolute(top 68px left 45px);
+
+	z-index: 2;
+
+	div{
+		@include size(10px, 34px);
+
+		position: relative;
+		display: inline-block;
+		margin-right: 4px;
+	}
+	 
+	span {
+		@include size(100%, 50%);
+		@include transition();  
+		
+		position:absolute;
+		border: 2px solid $c-secondary;  	
+		background: transparent;	
+	} 
+
+	.upper {		
+		@include transform(#{skewX(30deg)});
+
+		top: 0;
+		left:0; 
+		border-bottom: none;
+	}
+
+	.lower {
+		@include transform(#{skewX(-30deg)});
+
+		top: 50%;
+		left:0;		 
+		border-top: none;
+	}
+	
+	.to-animate { 
+		margin-left: 2px; 
+
+		span {
+			@include transform(#{skewX(0deg)}); 
+
+			background: $c-secondary;
+		}
+
+	}
+
+}
+
+.slide-nav:hover .next-icon {
+
+	 span {
+	 	border-color: $c-primary;
+	 	background: $c-primary;
+	 }
+
+	 .to-animate { 
+		margin-left: 0px; 
+
+		.upper {		
+			@include transform(#{skewX(30deg)});
+
+			top: 0;
+			left:0; 
+			border-bottom: none;
+		}
+
+		.lower {
+			@include transform(#{skewX(-30deg)});
+
+			top: 50%;
+			left:0;		 
+			border-top: none;
+		}
+
+	}
+
+}
+
+.prev-slide {
+	.next-icon { 
+		@include absolute( top  60px right 35px);
+		@include transform(#{rotate(180deg)});
+		
+		left:initial ;
+	}
+}
+
+/* RWD
+   ========================================================================== */
+
+@include media-breakpoint-down(md) {
+
+	.tech-serv-carousel .item {
+		padding-right: 20px;
+	}
+
+}
+
+@include media-breakpoint-down(sm) {
+
+	#technology-link, #cowork-link {
+		width: 100%;
+	}
+
+	.tech-serv-carousel .item {
+		padding-right: 0;
+	}
+
+	.tech-serv-carousel .owl-nav {
+	    bottom: 50%;
+	    right: -32%;
+	    width: 100vw;
+	}
+
+	.tech-serv-carousel.owl-theme .owl-nav [class*=owl-] {
+		display: inline-block;
+	}
+
+	.tech-serv-carousel.owl-theme .owl-nav  .owl-prev {
+		float: left;
+		margin-left: 15px;
+	}
+
+	.tech-serv-carousel .owl-prev::after {
+		display: none;
+	}
+
+	.tech-serv-carousel.owl-theme .owl-nav  .owl-next {
+		float: right;
+		margin-right: 8px;
+		margin-top:-12px;
+	}
+
+	.next-icon span {
+		border-color: #fff;
+	}
+
+	.next-icon .to-animate span {
+		background: #fff; 
+	}
+
+	.slide-nav:hover .next-icon span {
+	    border-color: #fff; 
+	    background: #fff; 
+	}
+
+	.withHeading .row {
+		background: #fff;
+	}
+
+	.slide-heading {
+	    top: 10px;
+	    left: 30px; 
+	    margin-left: 0;
+	    font-size: 2rem;
+	}
+		
+}
+
+
+@media (max-width: 767px) and (orientation: landscape) { 
+
+	.tech-serv-carousel .item {
+	    padding-right: 20px;
+	}
+
+	.tech-serv-icon {
+		margin-bottom: 10px; 
+	}
+
+	.tech-serv-carousel {
+		@include relative(top 20px);
+	}
+
+	.tech-serv-carousel.owl-theme .owl-nav .owl-next {
+	    margin-right: 30px;
+	}
+
+ } 

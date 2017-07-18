@@ -1,0 +1,88 @@
+#cowork-link {
+  width: 210px;
+  margin-right:40px;
+}
+
+.rotate2 {white-space:nowrap; }     
+ .kompanim-wrap { position: relative;  }   
+    .kompanim-box { position: absolute; top: 50%; margin-top: -40vh;  height: 80vh;     width: 100%; }
+    .kompanim-box div { position: absolute; top:0; left: 0; width: 100%; }
+    .kompanim-box svg { width: 100%; height: auto; }
+
+    .kompanim-box  #komputer-kompanim { margin-left: 70px; opacity: 0; 
+      transition:margin-left 0.7s ease-in-out,opacity 0.5s linear; }
+    .scroll-action.active .kompanim-box #komputer-kompanim {margin-left: 0px; opacity: 1; transition:margin-left 0.7s ease-in-out,opacity 0.5s linear; }
+
+    .kompanim-box  #telefon-kompanim { margin-top: 50px; opacity: 0; 
+      transition:margin-top 0.6s ease-in-out 0.2s,opacity 0.2s linear 0.2s; }
+    .scroll-action.active .kompanim-box #telefon-kompanim {margin-top: 0px; opacity: 1;}
+
+    .kompanim-box  #warstwa2-kompanim { margin-left: -150px; opacity: 0; 
+      transition:margin-left 0.6s ease-in-out ,opacity 0.3s linear ; }
+    .scroll-action.active .kompanim-box #warstwa2-kompanim {margin-left: 0px; opacity: 1; transition:margin-left 0.6s ease-in-out 0.6s,opacity 0.3s linear 0.6s;}
+
+    .kompanim-box  #warstwa1-kompanim { margin-left: -200px; opacity: 0; 
+      transition:margin-left 0.6s ease-in-out ,opacity 0.4s linear ; }
+    .scroll-action.active .kompanim-box #warstwa1-kompanim {margin-left: 0px; opacity: 1; transition:margin-left 0.6s ease-in-out 1s,opacity 0.4s linear 1s;}
+
+    .kompanim-box  #komputer-kompanim .cien-przod { fill: rgba(160, 147, 151,0) ;
+      transition:fill 0.6s ease-in-out ; }
+    .scroll-action.active .kompanim-box #komputer-kompanim  .cien-przod  {fill: rgba(160, 147, 151,1) ;  transition:fill 0.6s ease-in-out 0.6s; }
+
+    .kompanim-box  #warstwa2-kompanim .cien-przod, .kompanim-box  .cien-przod1 { fill: rgba(160, 147, 151,0) ;
+      transition:fill 0.4s ease-in-out ; }
+    .scroll-action.active .kompanim-box #warstwa2-kompanim  .cien-przod, .scroll-action.active .kompanim-box   .cien-przod1  {fill: rgba(160, 147, 151,1) ;  transition:fill 0.4s ease-in-out 1.3s;}
+
+    .kompanim-box  #warstwa1-kompanim .cien-dol { 
+          fill: rgba(160, 147, 151,0) ;
+
+      transition:fill 0.4s linear ; } 
+    .scroll-action.active .kompanim-box   #warstwa1-kompanim .cien-dol { fill: rgba(160, 147, 151,1) ; transition:fill 0.4s linear 1.5s;}
+
+    .kompanim-box  #warstwa2-kompanim .cien-dol { 
+          fill: rgba(160, 147, 151,0) ;
+
+      transition:fill 0.4s linear ; } 
+    .scroll-action.active .kompanim-box #warstwa2-kompanim .cien-dol { fill: rgba(160, 147, 151,1) ;  transition:fill 0.4s linear 1.2s;} 
+
+
+@include media-breakpoint-down(lg) { 
+  
+  .kompanim-box {
+    height: 50vh; 
+    width: 120%;
+    left: -20%;  
+    margin-top: -30vh;
+  }
+
+}
+
+@include media-breakpoint-down(md) { 
+
+  .kompanim-box {
+    height: 70vh;
+    width: 160%;
+    left: -77%;
+    margin-top: -27vh;
+    opacity: 0.9;
+  }
+
+}
+
+@include media-breakpoint-down(sm) { 
+
+  .kompanim-wrap { 
+    @include absolute(top 15px left 0px);
+    opacity: 0.3;  
+  }
+
+  .kompanim-box {
+    height: calc(100vh - 30px);
+    width: calc(100vw - 15px);
+    left: 0;
+    margin-top: 0;
+    opacity: 1;
+  }
+
+}
+

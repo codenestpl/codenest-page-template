@@ -1,0 +1,402 @@
+/* ==========================================================================
+   Sidebar Mneu styles 
+   ========================================================================== */
+
+/* TSidemu
+   ========================================================================== */ 
+
+ .sidemenu-container {
+ 	max-height: 100vh;
+ 	width: 300px;  	
+	background:#fff;
+}
+ 
+.sidemenu-nav {
+	@include relative(top 50%);
+	width: 100%;
+	margin-top:-165px; 
+
+	ul {
+		width: 100%;
+		list-style: none;
+		padding-left: 0px;
+	}
+	
+	li {
+		position: relative;
+		margin-bottom: 10px;
+
+		&::after{
+			@include transition();
+			@include absolute(top 0 left 0);
+			@include size(0px, 100%);	
+			content:'';
+			background: $c-color;
+		}
+		
+		&:hover::after, &.active::after {
+			width: 5px;
+		}
+
+		&.submenu { 
+
+			&::after {
+				background: $c-bg-medium; 
+			}
+
+		}
+
+	}
+
+	a {
+		@extend .heading-other;
+		@include transition();
+		
+		display: block;
+		width: 100%;
+		padding: 5px 30px;
+		margin:0px;
+		text-align: left; 
+		color:$c-secondary;
+
+		&:hover {
+			color:$c-primary;
+		}
+
+	}
+
+}
+
+.sidemenu-container .social-media-box {
+	bottom: 30px;
+	left: 0;
+	width: 100%;
+	padding-left: 30px; 
+	text-align: left;
+
+	&::after {
+		display:none;
+	}
+
+}
+
+.sidemenu-contact {
+	@include absolute(bottom 100px);	
+}
+
+.sidemenu-contact a {
+    display: block;
+    color: #ef4258;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    margin: 10px 0px;
+    padding-left: 30px;
+}
+
+/* Toogle bar
+   ========================================================================== */   
+
+.sidemenu-toggle-bar {
+	@include fixed (top 0 right 0);	
+	@include col-width(0.5);
+	@include transition();
+	
+	z-index: 1032;
+	min-width: 70px;
+	max-width: 70px;
+	height: 250px;
+	max-width: 100%;
+	cursor: pointer;  
+	 opacity: 1;
+}
+
+.sidemenu-button-box {
+	@include posAbs();
+	@include size(100%,150px); 
+
+	background-color:transparent; 
+
+	button {
+		@extend .heading-other;
+		@include verticalElement(24px); 
+		
+		height: 24px;
+		margin:0px 24px;
+		font-family:$fontfamily-primary;
+		font-size: 1rem;
+		font-weight: 700;
+		outline: none;
+		cursor: pointer;	
+
+		&::after, &::before {
+			@include transition();
+			@include absolute(top 0px left 10px);  
+		}
+
+		&::after {
+			content:'Menu';
+		}
+
+		&::before {
+			content:'Zamknij';
+			opacity: 0;
+			top:-60px;
+		}
+
+	}
+
+}
+
+.contact-button-box {
+	@include posAbs(bottom);
+	@include ratio(); 
+	@include size(100%);
+
+	border-top: 2px solid $c-grey-light;
+	border-bottom: 2px solid $c-grey-light;
+
+}
+
+/* Menu icon
+   ========================================================================== */ 
+
+.menu-icon { 
+	@include ratio(); 	
+
+	position: relative;
+	width: 50%;
+	max-width: 30px;
+	margin:20px auto 0px;  
+}
+
+.menu-icon-wrap {
+	@include posAbsFull();
+
+	overflow: hidden;
+}
+
+//Stage 1 - open menu
+
+.square-menu-icon {
+	@include size(26%);
+	@include ratio(); 
+	@include transition();
+	@include prefix(transition-delay, 300ms);
+
+	background-color: $c-secondary; 
+	position: absolute;
+	display: inline-block; 
+}
+
+.top-square {
+	top: 0;
+}
+
+.mid-square {
+	top: 36.3333%;     
+}
+
+.bot-square {
+	bottom: 0; 
+}
+
+.left-square {
+	left: 0;
+}
+
+.center-square { 
+	left: 36.3333%;   
+}
+
+.right-square {
+	right: 0; 
+}
+.central-square {
+	@include transform(#{rotate(0deg)}); 
+	@include prefix(transition-delay, 300ms);
+}
+
+
+//Stage 2 - close menu
+
+.close-menu-icon {
+	@include posAbsFull();
+	@include transition();
+	 
+
+	top: 50%;
+}
+
+.cross-menu-icon {
+	@include posAbs();
+	@include centered(26%);
+	@include transition();
+	
+	height:0%;
+	background:  $c-secondary;
+	opacity: 0; 
+
+	&.left-cross {
+		@include transform(#{rotate(45deg)}); 
+	}
+
+	&.right-cross {
+		@include transform(#{rotate(-45deg)}); 
+	}
+
+}
+
+
+
+//Stages animation
+
+.sidemenu-active.icon-anim  .menu-icon { 
+	.square-menu-icon {
+		@include prefix(transition-delay, 0ms);
+
+		background-color: $c-primary; 
+	}
+
+	.top-square {
+		top: 36.3333%; opacity: 0;
+	}
+	.bot-square {
+		bottom: 36.3333%; opacity: 0;
+	}
+	.left-square {
+		left: 36.3333%; opacity: 0;
+	}
+	.right-square {
+		right: 36.3333%; opacity: 0;
+	}
+
+	.central-square {
+		@include transform(#{rotate(45deg)});
+		@include prefix(transition-delay, 300ms);
+
+	}
+
+	.close-menu-icon {
+		@include prefix(transition-delay, 350ms);
+
+		top: 0%; 
+	}
+	.cross-menu-icon {
+		@include prefix(transition-delay, 350ms);
+
+		height: 100%;
+		opacity: 1;
+	}
+
+}
+
+/* Toogle bar
+   ========================================================================== */   
+
+
+.sidemenu-active {
+
+	 
+	header, #fp-nav {
+		opacity: 0; 
+		pointer-events:none;   
+	}
+	
+	&.icon-anim .sidemenu-button-box button::after{
+		top: 60px;
+		opacity: 0;
+	} 
+
+	&.icon-anim .sidemenu-button-box button::before{
+		top: 0;
+		opacity: 1;
+	} 
+	
+
+}
+
+/* White sidebar icon
+   ========================================================================== */  
+
+.fp-viewing-oferta-0 {
+	
+	.square-menu-icon, .cross-menu-icon  {
+		background: #fff;
+	}
+
+	.sidemenu-button-box button {
+		color: #fff;
+	}
+
+}
+
+/* RWD
+   ========================================================================== */
+
+@include media-breakpoint-up(md) { 
+
+	.fp-viewing-start .sidemenu-toggle-bar{
+		 right: -70px;
+		 opacity: 0;
+	}
+
+}
+
+@include media-breakpoint-down(md) { 
+
+	.fp-viewing-start .sidemenu-toggle-bar{
+		 right: 0;
+		 opacity: 1;
+	}
+
+	.sidemenu-button-box {
+		padding-top: 8px;
+	}
+
+	.sidemenu-button-box button::after{
+		display: none;
+	}
+
+	.sidemenu-nav {
+		top:0;
+		margin-top: 25px;
+	}	
+
+	.sidemenu-toggle-bar {
+		height: 80px;
+	}
+
+}
+
+@include media-breakpoint-down(sm) { 
+
+	.sidemenu-container#sidemenu {
+		width: calc(100vw - 70px)
+	}
+ 
+	.fp-viewing-start {
+
+		.square-menu-icon, .cross-menu-icon {
+			background-color: #fff; 
+		}
+
+		.sidemenu-button-box button {
+			color:#fff;
+		}
+
+	}
+	
+
+}
+
+@media (max-width: 767px) and (orientation: landscape) {
+
+	.sidemenu-contact {
+    	bottom: 10px;
+    }
+
+	.sidemenu-container .social-media-box {
+		display: none;
+	}
+
+}
